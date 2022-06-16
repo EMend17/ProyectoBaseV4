@@ -9,6 +9,7 @@ import com.ipn.mx.modelo.dto.DatosGraficaDTO;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,11 +23,16 @@ import java.util.logging.Logger;
  */
 public class CategoriaDAO {
 
-    private static final String SQL_INSERT = "{call spInsertar( ?, ?)}";
-    private static final String SQL_UPDATE = "{call spActualizar (?, ? ,?)}";
-    private static final String SQL_DELETE = "{call spEliminar(?)}";
-    private static final String SQL_READ = "{call spSeleccionarUno(?)}";
-    private static final String SQL_READ_ALL = "{call spSeleccionarTodo()}";
+    private static final String SQL_INSERT = " INSERT INTO Categoria (idCategoria, nombreCategoria, nombreCategoria) VALUES (?, ?, ?);  ";
+    private static final String SQL_UPDATE = " UPDATE Categoria   \n" +
+                                            " SET idCategoria = ?,  \n" +
+                                            " nombreCategoria = ?,  \n" +
+                                            " nombreCategoria = ?   \n" +
+                                            " WHERE\n" +
+                                            " idCategoria = ?;";
+    private static final String SQL_DELETE = "DELETE FROM Categoria WHERE idCategoria = ? ";
+    private static final String SQL_READ = "SELECT * FROM Categoria WHERE idCategoria = ?";
+    private static final String SQL_READ_ALL = "SELECT * FROM Categoria;";
     private static final String SQL_GRAFICAR = "{call spGraficar()}";
     
     
@@ -35,14 +41,14 @@ public class CategoriaDAO {
 
     private void obtenerConexion() {
         //obtener conexion
-        String usuario = "ztajikwtstxtdo";
-        String clave = "5432";
-        String url = "jdbc:mysql://ec2-44-196-174-238.compute-1.amazonaws.com:3306/dc21k5gt0g8nfp";
+        String usuario = "wtacdasmbsblsi";
+        String clave = "d20f03557f1e0f3feeea26b4bcf13d2d625434d9d5712948122b1fe9fb60e138";
+        String url = "jdbc:postgresql://ec2-52-73-184-24.compute-1.amazonaws.com:5432/d5g17l1sqiogql";
         //String url = "jdbc:mysql://localhost:3306/EscuelaWeb?
         //serverTimeZone=America/Mexico_City&allowPublicKeyRetrieval=true&
         //useSSL=false";
 
-        String driverBD = "com.mysql.cj.jdbc.Driver";
+        String driverBD = "org.postgresql.Driver";
 
         try {
             Class.forName(driverBD);
@@ -54,15 +60,15 @@ public class CategoriaDAO {
 
     public void create(CategoriaDTO dto) throws SQLException {
         obtenerConexion();
-        CallableStatement cs = null;
+        PreparedStatement ps = null;
         try {
-            cs = conexion.prepareCall(SQL_INSERT);
-            cs.setString(1, dto.getEntidad().getNombreCategoria());
-            cs.setString(2, dto.getEntidad().getDescripcionCategoria());
-            cs.executeUpdate();
+            ps = conexion.prepareStatement(SQL_INSERT);
+            ps.setString(1, dto.getEntidad().getNombreCategoria());
+            ps.setString(2, dto.getEntidad().getDescripcionCategoria());
+            ps.executeUpdate();
         } finally {
-            if (cs != null) {
-                cs.close();
+            if (ps != null) {
+                ps.close();
             }
             if (conexion != null) {
                 conexion.close();
@@ -72,9 +78,9 @@ public class CategoriaDAO {
 
     public void update(CategoriaDTO dto) throws SQLException {
         obtenerConexion();
-        CallableStatement cs = null;
+        PreparedStatement cs = null;
         try {
-            cs = conexion.prepareCall(SQL_UPDATE);
+            cs = conexion.prepareStatement(SQL_UPDATE);
             cs.setString(1, dto.getEntidad().getNombreCategoria());
             cs.setString(2, dto.getEntidad().getDescripcionCategoria());
             cs.setInt(3, dto.getEntidad().getIdCategoria());
@@ -91,9 +97,9 @@ public class CategoriaDAO {
 
     public void delete(CategoriaDTO dto) throws SQLException {
         obtenerConexion();
-        CallableStatement cs = null;
+        PreparedStatement cs = null;
         try {
-            cs = conexion.prepareCall(SQL_DELETE);
+            cs = conexion.prepareStatement(SQL_DELETE);
             cs.setInt(1, dto.getEntidad().getIdCategoria());
             cs.executeUpdate();
         } finally {
@@ -108,10 +114,10 @@ public class CategoriaDAO {
 
     public CategoriaDTO read(CategoriaDTO dto) throws SQLException {
         obtenerConexion();
-        CallableStatement cs = null;
+        PreparedStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conexion.prepareCall(SQL_READ);
+            cs = conexion.prepareStatement(SQL_READ);
             cs.setInt(1, dto.getEntidad().getIdCategoria());
             rs = cs.executeQuery();
             List resultados = obtenerResultados(rs);
@@ -132,10 +138,10 @@ public class CategoriaDAO {
 
     public List readAll() throws SQLException {
         obtenerConexion();
-        CallableStatement cs = null;
+        PreparedStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conexion.prepareCall(SQL_READ_ALL);
+            cs = conexion.prepareStatement(SQL_READ_ALL);
             rs = cs.executeQuery();
             List resultados = obtenerResultados(rs);
             if (resultados.size() > 0) {
