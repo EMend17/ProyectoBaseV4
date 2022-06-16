@@ -2,6 +2,7 @@ D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\modelo\dao\ArticuloDAO.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\modelo\dto\DatosGraficaDTO.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\modelo\dto\CategoriaDTO.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\modelo\entidades\Articulo.java
+D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\controlador\ArticuloServlet.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\utilerias\Utileria.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\modelo\dto\ArticuloDTO.java
 D:\ProyectosWebApps\PBV4\src\main\java\com\ipn\mx\controlador\CategoriaServlet.java

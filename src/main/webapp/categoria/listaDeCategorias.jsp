@@ -30,6 +30,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="CategoriaServlet?accion=listaDeCategorias">Listado de Categorías</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ArticuloServlet?accion=listaDeArticulos">Listado de Articulos</a>
+                            </li>
 
                         </ul>
                     </div>

@@ -27,7 +27,7 @@ public class CategoriaDAO {
     private static final String SQL_UPDATE = " UPDATE Categoria   \n" +
                                             " SET idCategoria = ?,  \n" +
                                             " nombreCategoria = ?,  \n" +
-                                            " nombreCategoria = ?   \n" +
+                                            " descripcionCategoria = ?   \n" +
                                             " WHERE\n" +
                                             " idCategoria = ?;";
     private static final String SQL_DELETE = "DELETE FROM Categoria WHERE idCategoria = ? ";

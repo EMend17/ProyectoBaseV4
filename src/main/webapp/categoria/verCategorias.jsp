@@ -3,12 +3,10 @@
     Created on : 7 abr. 2022, 07:57:54
     Author     : darkdestiny
 --%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+      <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Datos de la Categoría</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -30,7 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="CategoriaServlet?accion=listaDeCategorias">Listado de Categorías</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="ArticuloServlet?accion=listaDeArticulos">Listado de Articulos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         <li class="list-group-item">
                             <c:out value="${categoria.entidad.descripcionCategoria}"/>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>

@@ -30,7 +30,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="CategoriaServlet?accion=listaDeCategorias">Listado de Categorías</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="ArticuloServlet?accion=listaDeArticulos">Listado de Articulos</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -44,15 +46,15 @@
                 </div>
                 <div class="card-body">
                     <form method="post" action="CategoriaServlet?accion=guardar">
-                         <div class="mb-3">
+                        <div class="mb-3">
                             <label for="txtId" class="form-label">Clave Categor&iacute;a</label>
                             <input type="text" class="form-control" id="txtId" name="txtId" 
                                    value="${dto.entidad.idCategoria}"
                                    placeholder="Nombre de la Categoría"
-                                   
+
                                    />
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="txtNombre" class="form-label">Nombre Categor&iacute;a</label>
                             <input type="text" class="form-control" id="txtNombre" name="txtNombre" 
@@ -61,7 +63,7 @@
                                    required
                                    />
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="txtDescripcion" class="form-label"> Descripción de la Categoría</label>
                             <input type="text" name="txtDescripcion" id="txtDescripcion" 
@@ -71,7 +73,7 @@
                                    required/>
                         </div>
                         <div class="mb-3">
-                          
+
                             <input type="submit" name="btnEnviar" id="btnEnviar" 
                                    class="btn btn-outline-primary"
                                    value="Registrar"

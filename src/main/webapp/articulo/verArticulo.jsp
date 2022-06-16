@@ -1,14 +1,17 @@
 <%-- 
-    Document   : verCategorias
-    Created on : 7 abr. 2022, 07:57:54
-    Author     : darkdestiny
+    Document   : verArticulo
+    Created on : 16 jun 2022, 12:19:55
+    Author     : EMend17
 --%>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-      <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Datos de la Categoría</title>
+        <title>Datos del Articulo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
     </head>
@@ -39,19 +42,34 @@
             <div class="card text-primary">
                 <div class="card-header">
                     <h1 class="card-title  text-center">
-                        Datos de la Categoría
+                        Datos del Articulo
                     </h1>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <c:out value="${categoria.entidad.idCategoria}"/>
+                            <c:out value="${dto.entidad.idArticulo}"/>
                         </li>
                         <li class="list-group-item">
-                            <c:out value="${categoria.entidad.nombreCategoria}"/>
+                            <c:out value="${dto.entidad.nombreArticulo}"/>
                         </li>
                         <li class="list-group-item">
-                            <c:out value="${categoria.entidad.descripcionCategoria}"/>
+                            <c:out value="${dto.entidad.descripcionArticulo}"/>
+                        </li>
+                        <li class="list-group-item">
+                            <c:out value="${dto.entidad.precioArticulo}"/>
+                        </li>
+                        <li class="list-group-item">
+                            <c:out value="${dto.entidad.existenciaArticulo}"/>
+                        </li>
+                        <li class="list-group-item">
+                            <c:out value="${dto.entidad.stackMinArticulo}"/>
+                        </li>
+                        <li class="list-group-item">
+                            <c:out value="${dto.entidad.stackMaxArticulo}"/>
+                        </li>
+                        <li class="list-group-item">
+                            <c:out value="${dto.entidad.idCategoria}"/>
                         </li>
 
                     </ul>
